@@ -7,13 +7,19 @@ const UseFetch = (initialUrl) => {
     const [url, setUrl] = useState(initialUrl);
 
     useEffect(() => {
+        if(!url) return;
         setIsLoading(true);
+        setData(null);
+        setError(null);
 
         fetch(url)
         .then((response) => response.json())
         .then((data) => {
             setIsLoading(false);
-            console.log(data.list)
+            if(data.cod >= 400){
+                setError(data.message);
+                return;
+            }
             setData(data);
         })
         .catch((error) => {
