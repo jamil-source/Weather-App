@@ -1,6 +1,7 @@
 import './App.css';
-import { API_URL, API_KEY } from './apis/config';
-import UseFetch from './hooks/fetch_location';
+import { API_BASE_URL, API_KEY, API_PRO_URL } from './apis/config';
+import FetchHourly from './hooks/hourly_fetchlocation';
+import FetchDaily from './hooks/daily_fetchlocation';
 import LocationSelector from './components/locationSelect';
 import {Container} from 'react-bootstrap';
 import WeatherList from './components/weatherlist';
@@ -8,18 +9,20 @@ import CurrentPosition from './components/currentposition';
 
 
 function App() {
-  const {data, error, isLoading, setUrl} = UseFetch();
+  const {data, error, isLoading, setUrl} = FetchHourly();
+  const {result, errorDaily, isLoadingDaily, setDailyUrl} = FetchDaily();
+
   
   const getSearchedLocation = () => {
-    if(error) return <h2>Error: {error}</h2>
-    if(!data && isLoading) return <h2>Loading...</h2>
-    if(!data) return null;
-    return <WeatherList weathers={data.list} />
+    if(error || errorDaily) return <h2>Error: {error}</h2>
+    if((!data && isLoading) || (!result && isLoadingDaily)) return <h2>Loading...</h2>
+    if(!data || !result) return null;
+    return <WeatherList weathersHourly={data.list} weathersDaily = {result.list} />
   }
   return (
     <Container className="App">
       <CurrentPosition />
-      <LocationSelector onSearch = {(city) => setUrl(`${API_URL}data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}`)}/>
+      <LocationSelector onSearch = {(city) => setUrl(`${API_BASE_URL}data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}`, setDailyUrl(`${API_PRO_URL}/data/2.5/forecast/daily?q=${city}&cnt=7&appid=${API_KEY}&units=metric`))}/>
       {getSearchedLocation()}
     </Container>
   );

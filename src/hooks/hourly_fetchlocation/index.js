@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 
-const UseFetch = (initialUrl) => {
+const FetchHourly = (initialUrl) => {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(null)
@@ -31,4 +31,4 @@ const UseFetch = (initialUrl) => {
     return { data, error, isLoading, setUrl }
 }
 
-export default UseFetch;
+export default FetchHourly;

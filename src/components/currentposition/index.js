@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react'
 import {Card} from 'react-bootstrap';
 import sunriseImg from '../../icons/sunrise.png'
 import sunsetImg from '../../icons/sunset.png'
+import { API_BASE_URL, API_KEY, API_PRO_URL } from '../../apis/config';
+
 
 
 const CurrentPosition = () => {
@@ -37,7 +39,7 @@ const CurrentPosition = () => {
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
             // Fetch from openweather api
-            fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=dc6b63228195dc787438b6747ec72813`)
+            fetch(`${API_BASE_URL}data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`)
             .then((response) => response.json())
             .then((data) => {
                 console.log(data)
