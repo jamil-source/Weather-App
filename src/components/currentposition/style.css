@@ -1,0 +1,88 @@
+.mainCard {
+    border: 0 !important;
+    box-shadow: grey 3px 6px 11px -4px;
+    border-radius: 6px !important;
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    padding: 50px;
+    margin-top: 20px;
+  }
+  
+  .currentLocTitle {
+    text-align: left;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: table;
+    padding: 7px 25px;
+    border-radius: 25px;
+  }
+  
+  .imgTemp img {
+    width: 150px;
+    margin: 0px 40px 20px 0px;
+    display: block;
+  }
+  .toggler {
+    font-size: 30px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 7px 10px;
+    width: 54px;
+    align-self: center;
+    box-shadow: 4px 4px 6px 0px #0b4869;
+  }
+  .toggler:hover {
+    color: #0b4869;
+    background-color: white;
+    border-color: #0b4869;
+  }
+  .toggler:active {
+    box-shadow: 0 0 0 0 black;
+  }
+  
+  .sunImg {
+    margin-left: 10px;
+  }
+  @media screen and (min-width: 768px) {
+    .currentDetails {
+      font-size: 23px;
+      line-height: 2;
+      margin-left: 37px;
+    }
+  }
+  @media screen and (max-width: 1024px) {
+    .imgTemp {
+      flex-direction: column !important;
+    }
+    .imgTemp img {
+      margin: 20px auto !important;
+    }
+    .col-xl-6 {
+      border-right: 0 !important;
+    }
+    .flex-resp {
+      flex-direction: column !important;
+    }
+    .flex-resp span {
+      margin: 0 !important;
+    }
+    .flex-resp .card-title.h5 {
+      margin-left: 0 !important;
+    }
+    .flex-resp p {
+      text-align: left;
+    }
+    .currentLocTitle {
+      margin: 0 auto;
+    }
+    .currentDetails {
+      margin-bottom: 20px !important;
+    }
+    .mainCard {
+      padding: 43px;
+    }
+  }
+  

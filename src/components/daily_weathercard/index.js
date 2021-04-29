@@ -42,11 +42,13 @@ const WeatherCardDaily = ({ dt, temp_max, main, sunset, sunrise, windspeed, humi
         textAlign: "left",
         boxShadow: "grey 3px 6px 11px -4px",
         border: "0px",
+        borderRadius: "6px",
       }}
     >
       <Card.Title
         style={{
           fontWeight: "bold",
+          color: "rgb(150 150 150)",
         }}
       >
         {main}
@@ -73,6 +75,7 @@ const WeatherCardDaily = ({ dt, temp_max, main, sunset, sunrise, windspeed, humi
               marginLeft: "auto",
               backgroundColor: "transparent",
               border: "1px solid lightgray",
+              boxShadow: "4px 4px 6px 0px rgb(150 154 164) ",
             }}
             onClick={toggler}
           >
@@ -100,17 +103,17 @@ const WeatherCardDaily = ({ dt, temp_max, main, sunset, sunrise, windspeed, humi
         }}
       >
         <p style={{ marginBottom: "0" }}>
-          <span style={{ fontWeight: "bold" }}>Windspeed:</span> {windspeed}{" "}
+          <span style={{ fontWeight: "bold", color: "rgb(150 150 150)"}}>Windspeed:</span> {windspeed}{" "}
           km/h
         </p>
         <p>
-          <span style={{ fontWeight: "bold" }}>Humidity:</span> {humidity}%
+          <span style={{ fontWeight: "bold", color: "rgb(150 150 150)" }}>Humidity:</span> {humidity}%
         </p>
         <p>
-          <span style={{ fontWeight: "bold" }}>Sunrise:</span> {sunsetDate.toLocaleTimeString()}
+          <span style={{ fontWeight: "bold", color: "rgb(150 150 150)" }}>Sunrise:</span> {sunriseDate.toLocaleTimeString()}
         </p>
         <p>
-          <span style={{ fontWeight: "bold" }}>Sunset:</span> {sunriseDate.toLocaleTimeString()}
+          <span style={{ fontWeight: "bold", color: "rgb(150 150 150)" }}>Sunset:</span> {sunsetDate.toLocaleTimeString()}
         </p>
       </Card.Body>
     </Card>

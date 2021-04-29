@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
-import {Row, Col, FormControl, Button} from 'react-bootstrap';
+import React, { useState } from "react";
+import "./style.css";
+import { Row, Col, FormControl, Button } from "react-bootstrap";
 
+const LocationSelector = ({ onSearch }) => {
+  const [city, setCity] = useState("");
 
-const LocationSelector = ({onSearch}) => {
-  const [city, setCity] = useState('');
-  
   const onKeyDown = (event) => {
     if (event.keyCode === 13) {
       onSearch(city);
@@ -12,28 +12,33 @@ const LocationSelector = ({onSearch}) => {
   };
 
   return (
-      <>
-        <Row>
-            <Col>
-                <h1>Search your city</h1>
-            </Col>
-        </Row>
-        <Row>
-            <Col xs={4}>
-                <FormControl
-                placeholder="Enter city.."
-                onChange={(event) => setCity(event.target.value)}
-                value={city}
-                onKeyDown={onKeyDown}
-                />
-            </Col>
-        </Row>
-        <Row>
-            <Col>
-                <Button onClick={() => onSearch(city)}>Check Weather</Button>
-            </Col>
-        </Row>
-      </>
+    <>
+      <Row>
+        <Col>
+          <h1 style={{ marginTop: "70px", color: "#4247" }}>Search a city</h1>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={4}>
+          <FormControl
+            placeholder="Enter city.."
+            onChange={(event) => setCity(event.target.value)}
+            value={city}
+            onKeyDown={onKeyDown}
+          />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Button
+            onClick={() => onSearch(city)}
+            style={{ marginBottom: "40px", marginTop: "20px" }}
+          >
+            Check Weather
+          </Button>
+        </Col>
+      </Row>
+    </>
   );
 };
 
