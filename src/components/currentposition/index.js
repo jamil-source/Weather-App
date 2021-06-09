@@ -41,7 +41,7 @@ const CurrentPosition = () => {
       const longitude = position.coords.longitude;
       // Fetch from openweather api
       fetch(
-        `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=dc6b63228195dc787438b6747ec72813`
+        `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${process.env.REACT_APP_API_KEY}`
       )
         .then((response) => response.json())
         .then((data) => {

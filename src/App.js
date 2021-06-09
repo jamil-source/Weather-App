@@ -1,5 +1,5 @@
 import './App.css';
-import { API_BASE_URL, API_KEY, API_PRO_URL } from './apis/config';
+import { API_BASE_URL, API_PRO_URL } from './apis/config';
 import FetchHourly from './hooks/hourly_fetchlocation';
 import FetchDaily from './hooks/daily_fetchlocation';
 import LocationSelector from './components/locationSelect';
@@ -12,6 +12,8 @@ function App() {
   const {data, error, isLoading, setUrl} = FetchHourly();
   const {result, errorDaily, isLoadingDaily, setDailyUrl} = FetchDaily();
 
+  console.log(process.env)
+
   
   const getSearchedLocation = () => {
     if(error || errorDaily) return <h2>Error: {error}</h2>
@@ -22,7 +24,7 @@ function App() {
   return (
     <Container className="App">
       <CurrentPosition />
-      <LocationSelector onSearch = {(city) => setUrl(`${API_BASE_URL}data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}`, setDailyUrl(`${API_PRO_URL}/data/2.5/forecast/daily?q=${city}&cnt=7&appid=${API_KEY}&units=metric`))}/>
+      <LocationSelector onSearch = {(city) => setUrl(`${API_BASE_URL}data/2.5/forecast?q=${city}&units=metric&appid=${process.env.REACT_APP_API_KEY}`, setDailyUrl(`${API_PRO_URL}/data/2.5/forecast/daily?q=${city}&cnt=7&appid=${process.env.REACT_APP_API_KEY}&units=metric`))}/>
       {getSearchedLocation()}
     </Container>
   );
