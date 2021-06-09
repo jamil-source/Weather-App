@@ -12,9 +12,6 @@ function App() {
   const {data, error, isLoading, setUrl} = FetchHourly();
   const {result, errorDaily, isLoadingDaily, setDailyUrl} = FetchDaily();
 
-  console.log(process.env)
-
-  
   const getSearchedLocation = () => {
     if(error || errorDaily) return <h2>Error: {error}</h2>
     if((!data && isLoading) || (!result && isLoadingDaily)) return <h2>Loading...</h2>
